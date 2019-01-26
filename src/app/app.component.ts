@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'componentTemplates';
+  heroImageUrl = './assets/images/hero.png';
+  isSpecial: Boolean = true;
+
+  onSave(event: KeyboardEvent) {
+    const evtMsg = (<HTMLElement>event.target).textContent;
+    alert(evtMsg);
+    if (event) {
+      event.stopPropagation();
+    }
+  }
 }
