@@ -1,12 +1,79 @@
-<h3>
-  {{title}}
-  <img [src]="heroImageUrl" style="height:30px">
-</h3>
+<!--
+<hr><h2 id="ngSwitch">NgSwitch Binding</h2>
 
-<p>Template $event statement context</p>
-<div class="context">
-  <button (click)="onSave($event)">Save</button>
+<p>Pick your favorite hero</p>
+<div>
+  <label>
+    <input type="radio" style="display: none;" name="ejm" [(ngModel)]="currentHero" value="uno">uno
+  </label>
+  |
+  <label>
+    <input type="radio" style="display: none;" name="ejm" [(ngModel)]="currentHero" value="dos">dos
+  </label>
+  |
+  <label>
+    <input type="radio" style="display: none;" name="ejm" [(ngModel)]="currentHero" value="tres">tres
+  </label>
 </div>
 
-<p [ngClass]="'uno'">prueba ngClass</p>
-<p [class.dos]="isSpecial">prueba class</p>
+<div [ngSwitch]="currentHero">
+    <p *ngSwitchCase="'uno'">{{currentHero}}</p>
+    <p *ngSwitchCase="'dos'">{{currentHero}}</p>
+    <p *ngSwitchCase="'tres'">{{currentHero}}</p>
+    <p *ngSwitchDefault>default</p>
+</div>
+
+<hr>
+
+<app-hero-parent></app-hero-parent>
+
+<hr>
+
+<app-name-parent></app-name-parent>
+
+<hr>
+
+<app-version-parent></app-version-parent>
+
+<hr>
+
+<app-votetaker></app-votetaker>
+
+<hr>
+
+<app-countdown-local-var-parent></app-countdown-local-var-parent>
+
+<h1>My First Attribute Directive</h1>
+
+<h4>Pick a highlight color</h4>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<p [appHighlight]="color">Highlight me!</p>
+
+<p><i>&lt;select&gt; with &lt;ng-container&gt;</i></p>
+<div>
+  Pick your favorite hero
+  (<label><input type="checkbox" checked (change)="showSad = !showSad">show sad</label>)
+</div>
+<select [(ngModel)]="hero">
+  <ng-container *ngFor="let h of heroes">
+    <ng-container *ngIf="showSad || h.emotion !== 'sad'">
+      <option [ngValue]="h">{{h.name}} ({{h.emotion}})</option>
+    </ng-container>
+  </ng-container>
+</select>
+<br><br>
+
+-->
+
+<p *appUnless="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appUnless="!condition" class="unless b">
+  (B) Although the condition is true,
+  this paragraph is displayed because appUnless is set to false.
+</p>

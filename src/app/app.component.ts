@@ -1,19 +1,14 @@
 import { Component } from '@angular/core';
+import { Hero, heroes } from './heroo';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  heroImageUrl = './assets/images/hero.png';
-  isSpecial: Boolean = true;
+  heroes = heroes;
+  hero = this.heroes[0];
+  condition = false;
 
-  onSave(event: KeyboardEvent) {
-    const evtMsg = (<HTMLElement>event.target).textContent;
-    alert(evtMsg);
-    if (event) {
-      event.stopPropagation();
-    }
-  }
+  showSad = true;
 }
