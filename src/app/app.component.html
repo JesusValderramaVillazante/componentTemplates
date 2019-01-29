@@ -67,8 +67,6 @@
 </select>
 <br><br>
 
--->
-
 <p *appUnless="condition" class="unless a">
   (A) This paragraph is displayed because the condition is false.
 </p>
@@ -77,3 +75,27 @@
   (B) Although the condition is true,
   this paragraph is displayed because appUnless is set to false.
 </p>
+
+<button #myButton> button </button>
+
+<ng-container *ngIf="people.length > 0 else nopeople">
+  <div *ngFor="let person of people">
+    {{person.name}}
+  </div>
+</ng-container>
+
+<ng-template #nopeople>
+  <div>there is no people to show</div>
+</ng-template>
+
+<ng-container [ngTemplateOutlet]="ejm"></ng-container>
+
+<ng-template #e>
+  <div>probando</div>
+</ng-template>
+-->
+
+<ng-template #numberPeopleTemplate let-peopleCounter="numberOfPeople">
+  <div>hay {{peopleCounter}} personas</div>
+</ng-template>
+<ng-container *ngTemplateOutlet="numberPeopleTemplate; context:ctx"></ng-container>
